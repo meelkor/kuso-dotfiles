@@ -1,0 +1,10 @@
+#!/usr/bin/node
+
+const process = require("process");
+const { exec } = require("child_process");
+const { readFileSync } = require("fs");
+
+const geojson = readFileSync(process.argv[2], { encoding: "utf8" });
+const query = encodeURIComponent(geojson);
+exec(process.env["CHROME_BIN"] + " http://geojson.io/#data=data:application/json," + query);
+

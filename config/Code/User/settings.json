@@ -1,0 +1,29 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "editor.renderWhitespace": "all",
+    "editor.rulers": [
+        79,
+        89
+    ],
+    "files.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "typings": true,
+        "**/dist/*": true,
+        "**/built/*": true
+    },
+    "window.zoomLevel": 1,
+    "workbench.colorTheme": "An Old Hope",
+    "editor.minimap.enabled": true,
+
+    "html.format.wrapAttributes": "force-aligned",
+    "html.format.wrapLineLength": 90,
+    "editor.autoIndent": false,
+    "editor.fontFamily": "'Consolas'",
+    "window.menuBarVisibility": "toggle",
+    "workbench.iconTheme": "material-icon-theme",
+    "typescript.autoImportSuggestions.enabled": false,
+
+    "python.pythonPath": "python2.7",
+    "glassit.alpha": 10
+}

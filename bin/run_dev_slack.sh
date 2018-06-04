@@ -1,0 +1,1 @@
+SLACK_DEVELOPER_MENU=true slack

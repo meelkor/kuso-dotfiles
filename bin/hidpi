@@ -1,0 +1,4 @@
+#!/bin/bash
+
+#xrandr --output eDP1  1x1
+export GDK_SCALE=2

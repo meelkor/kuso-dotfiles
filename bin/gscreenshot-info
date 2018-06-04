@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+gscreenshot-cli -sc
+
+rm /tmp/based-screenshot.png
+xclip -selection clipboard -o > /tmp/based-screenshot.png
+
+file_info=`file /tmp/based-screenshot.png`
+
+notify-send 'Screenshot taken' "`echo ${${file_info#*,}%%,*} | tr -d ' '`" -i '/tmp/based-screenshot.png'
+
+

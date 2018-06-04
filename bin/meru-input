@@ -1,0 +1,5 @@
+#!/bin/bash
+
+xset dpms 180 180 180
+xset r rate 240 50
+
