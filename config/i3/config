@@ -36,17 +36,17 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec /home/merumeru/dmenu.sh
+#bindsym $mod+d exec /home/merumeru/dmenu.sh
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-#bindsym $mod+j focus left
-#bindsym $mod+k focus down
-#bindsym $mod+l focus up
-#bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -67,7 +67,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+Shift+v split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -170,31 +170,40 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-	i3bar_command i3bar -t
-        status_command i3blocks
-	strip_workspace_numbers yes
-	font pango:Roboto 11
-	height 26
-	colors {
-		background #18181800
-		statusline #aaaaaaff
-		focused_workspace #5090ff60 #10101000 #c2c2c2
-		inactive_workspace #18181800 #18181800 #909090
-	}
-}
+#bar {
+#	i3bar_command i3bar -t
+#        status_command i3blocks
+#	strip_workspace_numbers yes
+#	font pango:Roboto 11
+#	height 26
+#	colors {
+#		background #18181800
+#		statusline #aaaaaaff
+#		focused_workspace #5090ff60 #10101000 #c2c2c2
+#		inactive_workspace #18181800 #18181800 #909090
+#	}
+#}
 
 focus_follows_mouse no
-new_window pixel 0
-for_window [class=".*"] border pixel 0
+new_window normal
+default_floating_border normal 18
+for_window [class=".*"] border pixel 10
 hide_edge_borders both
+
+# class                 border  backgr. text    indicator child_border
+client.focused          "#ffffff00" "#ffffff00" "#ffffff00" "#ffffff00"   "#ffffff00"
+client.focused_inactive "#ffffff00" "#ffffff00" "#ffffff00" "#ffffff00"   "#ffffff00"
+client.unfocused        "#ffffff00" "#ffffff00" "#ffffff00" "#ffffff00"   "#ffffff00"
+client.urgent           "#ffffff00" "#ffffff00" "#ffffff00" "#ffffff00"   "#ffffff00"
+client.placeholder      "#ffffff00" "#ffffff00" "#ffffff00" "#ffffff00"   "#ffffff00"
+
 
 bindcode $mod+Control+113 --release workspace prev
 bindcode $mod+Control+114 --release workspace next
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% && pkill -RTMIN+1 i3blocks #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% && pkill -RTMIN+1 i3blocks #decrease sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && pkill -RTMIN+1 i3blocks #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && pkill -RTMIN+1 i3blocks #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
 
 # Sreen brightness controls
@@ -211,17 +220,17 @@ bindsym $mod+button6 --release --whole-window workspace prev
 bindsym $mod+button7 --release --whole-window workspace next
 
 bindsym $mod+Tab workspace back_and_forth
-bindsym $mod+l exec /home/merumeru/lock.sh
+#bindsym $mod+l exec /home/merumeru/lock.sh
 bindsym $mod+Shift+s exec gscreenshot-info -c -s
 
 bindsym $mod+Shift+F12 "exec pkill compton"
-bindsym $mod+Shift+F11 "exec compton -b --blur-kern 7x7box"
+bindsym $mod+Shift+F11 "exec compton -b"
 bindsym $mod+Shift+F10 "gaps inner current set 0"
 bindsym $mod+Shift+F9 "gaps inner current set 20"
 
-exec compton -b --blur-kern 7x7box
-exec dunst
-exec slack
+exec compton -b
+#exec dunst
+#exec slack
 
 ######################## Gaps config #########################
 
@@ -234,5 +243,6 @@ workspace $w_chrome gaps inner 0
 # workspace $w_code gaps inner 0
 ## workspace $w_
 
-exec_always --no-startup-id feh --no-fehbg --bg-scale ~/images/wallpapers/yandere-436709.jpg
+exec_always --no-startup-id feh --no-fehbg --bg-scale ~/Pictures/Wallpapers/yande.re\ 457244\ cleavage\ dress_shirt\ uu_uu_zan\ wallpaper.jpg
+exec --no-startup-id polybar unko
 
