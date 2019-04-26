@@ -1,68 +1,58 @@
-#define S_base03        #002b36
-#define S_base02        #073642
-#define S_base01        #586e75
-#define S_base00        #657b83
-#define S_base0         #839496
-#define S_base1         #93a1a1
-#define S_base2         #eee8d5
-#define S_base3         #fdf6e3
+! special
+*.foreground:   #d7d0c7
+*.background:   #151515
+*.cursorColor:  #d7d0c7
 
-*background:            S_base03
-*foreground:            S_base0
-*fadeColor:             S_base03
-*cursorColor:           S_base1
-*pointerColorBackground:S_base01
-*pointerColorForeground:S_base1
+! black
+*.color0:       #101010
+*.color8:       #404040
 
-#define S_yellow        #b58900
-#define S_orange        #cb4b16
-#define S_red           #dc322f
-#define S_magenta       #d33682
-#define S_violet        #6c71c4
-#define S_blue          #268bd2
-#define S_cyan          #2aa198
-#define S_green         #859900
+! red
+*.color1:       #e84f4f
+*.color9:       #d23d3d
 
-!! black dark/light
-*color0:                S_base02
-*color8:                S_base03
+! green
+*.color2:       #b8d68c
+*.color10:      #a0cf5d
 
-!! red dark/light
-*color1:                S_red
-*color9:                S_orange
+! yellow
+*.color3:       #e1aa5d
+*.color11:      #f39d21
 
-!! green dark/light
-*color2:                S_green
-*color10:               S_base01
+! blue
+*.color4:       #7dc1cf
+*.color12:      #4e9fb1
 
-!! yellow dark/light
-*color3:                S_yellow
-*color11:               S_base00
+! magenta
+*.color5:       #9b64fb
+*.color13:      #8542ff
 
-!! blue dark/light
-*color4:                S_blue
-*color12:               S_base0
+! cyan
+*.color6:       #6d878d
+*.color14:      #42717b
 
-!! magenta dark/light
-*color5:                S_magenta
-*color13:               S_violet
+! white
+*.color7:       #dddddd
+*.color15:      #dddddd
 
-!! cyan dark/light
-*color6:                S_cyan
-*color14:               S_base1
+!URxvt*font: xft:Roboto Mono for Powerline:size=12,xft:FontAwesome:size=12
+URxvt*font: xft:RobotoMono Nerd Font Mono:size=12,xft:FontAwesome:size=12
 
-!! white dark/light
-*color7:                S_base2
-*color15:               S_base3
-
-URxvt*font: xft:Roboto Mono for Powerline:size=12
 !URxvt*font: xft:Consolas:size=12
 URxvt*renderFont: true
 
 URxvt.depth: 32
-URxvt.background: rgba:0000/0000/0200/6500
+URxvt.background: rgba:1500/1500/1500/bb00
+!URxvt.background: rgba:0000/0000/0200/6500
 URxvt.scrollBar: false
 URxvt.cursorBlink: 1
 URxvt.cursorUnderline: 1
 !URxvt.letterSpace: 1
+
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: chromium
+URxvt.matcher.button: 2
+URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&amp;@#-]*[\\w/-]
+
+!Xft.dpi: 180
 

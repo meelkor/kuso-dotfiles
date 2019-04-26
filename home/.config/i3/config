@@ -36,7 +36,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-#bindsym $mod+d exec /home/merumeru/dmenu.sh
+bindsym $mod+d exec /home/merumeru/dmenu.sh
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -132,8 +132,11 @@ assign [class="Slack"] $w_chat
 assign [class="Google Play Music Desktop Player"] $w_music
 
 for_window [class="skivi"] floating enable
+for_window [title="CSV"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="feh"] resize set 720 px 500 px
+for_window [class="Anamnesis"] floating enable
+for_window [class="Anamnesis"] resize set 720 px 500 px
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -175,6 +178,12 @@ bindsym $mod+r mode "resize"
 #        status_command i3blocks
 #	strip_workspace_numbers yes
 #	font pango:Roboto 11
+#	height 38
+#	colors {
+#		background #ffffff50
+#		statusline #aaaaaaff
+#		focused_workspace #ffffff50 #cccccc50 #c2c2c2
+#		inactive_workspace #ffffff50 #ffffff50 #6a6a6a
 #	}
 #}
 
@@ -200,20 +209,12 @@ for_window [class="URxvt"] new_window pixel 12
 
 #hide_edge_borders both
 
-# class                 border  backgr. text    indicator child_border
-client.focused          "#ffffff00" "#ffffff00" "#ffffff00" "#ffffff00"   "#ffffff00"
-client.focused_inactive "#ffffff00" "#ffffff00" "#ffffff00" "#ffffff00"   "#ffffff00"
-client.unfocused        "#ffffff00" "#ffffff00" "#ffffff00" "#ffffff00"   "#ffffff00"
-client.urgent           "#ffffff00" "#ffffff00" "#ffffff00" "#ffffff00"   "#ffffff00"
-client.placeholder      "#ffffff00" "#ffffff00" "#ffffff00" "#ffffff00"   "#ffffff00"
-
-
 bindcode $mod+Control+113 --release workspace prev
 bindcode $mod+Control+114 --release workspace next
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && pkill -RTMIN+1 i3blocks #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && pkill -RTMIN+1 i3blocks #decrease sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% && pkill -RTMIN+1 i3blocks #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% && pkill -RTMIN+1 i3blocks #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
 
 # Sreen brightness controls
@@ -230,7 +231,7 @@ bindsym $mod+button6 --release --whole-window workspace prev
 bindsym $mod+button7 --release --whole-window workspace next
 
 bindsym $mod+Tab workspace back_and_forth
-#bindsym $mod+l exec /home/merumeru/lock.sh
+bindsym $mod+Shift+l exec /home/merumeru/lock.sh
 bindsym $mod+Shift+s exec gscreenshot-info -c -s
 bindsym $mod+Shift+Ctrl+s exec byzanz-gui
 
@@ -239,10 +240,13 @@ bindsym $mod+Shift+F11 "exec compton -b"
 bindsym $mod+Shift+F10 "gaps inner current set 0"
 bindsym $mod+Shift+F9 "gaps inner current set 20"
 
+#bindsym $mod+Shift+v "exec anamnesis --browse"
+
 exec compton -b
 exec dunst
 exec nm-applet
-exec redshift-gtk -t 5500:4500
+exec_always --no-startup-id pkill redshift; redshift-gtk -t 5500:4500
+exec anamnesis --start
 
 ######################## Gaps config #########################
 
@@ -255,7 +259,8 @@ workspace $w_chrome gaps inner 0
 # workspace $w_code gaps inner 0
 ## workspace $w_
 
-exec_always --no-startup-id feh --no-fehbg --bg-scale ~/Pictures/Wallpapers/yande.re\ 457244\ cleavage\ dress_shirt\ uu_uu_zan\ wallpaper.jpg
+exec_always --no-startup-id feh --no-fehbg --bg-scale ~/images/wallpapers/building.jpg
 exec_always --no-startup-id pkill polybar; polybar unko
+exec_always --no-startup-id meru-input
 #exec_always --no-startup-id feh --no-fehbg --bg-scale ~/images/wallpapers/yandere-436709.jpg
 
