@@ -80,6 +80,10 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
+bindsym $mod+b layout splith
+bindsym $mod+Shift+b layout splitv
+
+
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
@@ -213,8 +217,8 @@ bindcode $mod+Control+113 --release workspace prev
 bindcode $mod+Control+114 --release workspace next
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% && pkill -RTMIN+1 i3blocks #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% && pkill -RTMIN+1 i3blocks #decrease sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && pkill -RTMIN+1 i3blocks #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && pkill -RTMIN+1 i3blocks #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
 
 # Sreen brightness controls
@@ -231,21 +235,28 @@ bindsym $mod+button6 --release --whole-window workspace prev
 bindsym $mod+button7 --release --whole-window workspace next
 
 bindsym $mod+Tab workspace back_and_forth
-bindsym $mod+Shift+l exec /home/merumeru/lock.sh
+bindsym $mod+Shift+l exec /home/merumeru/.bin/lock.sh
 bindsym $mod+Shift+s exec gscreenshot-info -c -s
 bindsym $mod+Shift+Ctrl+s exec byzanz-gui
 
 bindsym $mod+Shift+F12 "exec pkill compton"
-bindsym $mod+Shift+F11 "exec compton -b"
+bindsym $mod+Shift+F11 "exec compton -b "
+#--experimental-backends
 bindsym $mod+Shift+F10 "gaps inner current set 0"
 bindsym $mod+Shift+F9 "gaps inner current set 20"
+
+bindsym $mod+Ctrl+j "exec kill -34 `cat /tmp/notifihub-pid`"
+bindsym $mod+Ctrl+k "exec kill -35 `cat /tmp/notifihub-pid`"
+bindsym $mod+Ctrl+h "exec kill -36 `cat /tmp/notifihub-pid`"
+bindsym $mod+Ctrl+l "exec kill -37 `cat /tmp/notifihub-pid`"
+bindsym $mod+Ctrl+y "exec kill -38 `cat /tmp/notifihub-pid`"
 
 #bindsym $mod+Shift+v "exec anamnesis --browse"
 
 exec compton -b
+#--experimental-backends
 exec dunst
 exec nm-applet
-exec_always --no-startup-id pkill redshift; redshift-gtk -t 5500:4500
 exec anamnesis --start
 
 ######################## Gaps config #########################
@@ -259,8 +270,9 @@ workspace $w_chrome gaps inner 0
 # workspace $w_code gaps inner 0
 ## workspace $w_
 
-exec_always --no-startup-id feh --no-fehbg --bg-scale ~/images/wallpapers/building.jpg
+exec_always --no-startup-id feh --no-fehbg --bg-scale ~images/wallpapers/yandere-436709.jpg
 exec_always --no-startup-id pkill polybar; polybar unko
 exec_always --no-startup-id meru-input
 #exec_always --no-startup-id feh --no-fehbg --bg-scale ~/images/wallpapers/yandere-436709.jpg
 
+exec_always --no-startup-id redshift -PO 4500
