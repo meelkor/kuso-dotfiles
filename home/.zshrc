@@ -101,6 +101,8 @@ prompt_context(){}
 #alias cya="~/lock.sh & systemctl suspend"
 
 alias vim=nvim
+alias ls=exa
+alias optijpg="mogrify -strip -interlace Plane -sampling-factor 4:2:0 -quality 90% "
 export EDITOR=nvim
 
 bindkey "^[Od" backward-word
@@ -117,10 +119,11 @@ PATH+=":/home/merumeru/projects/spaceknow/backend/devtools"
 PATH+=":/home/merumeru/projects/spaceknow/backend/scripts"
 export PATH
 
-source /home/merumeru/trash/google-cloud-sdk/completion.zsh.inc
-source /home/merumeru/trash/google-cloud-sdk/path.zsh.inc
+#source /home/merumeru/trash/google-cloud-sdk/completion.zsh.inc
+#source /home/merumeru/trash/google-cloud-sdk/path.zsh.inc
 
 export LD_PRELOAD="/usr/lib/libwcwidth-icons.so"
 
 #autoload predict-on
 #predict-on
+source /usr/share/nvm/init-nvm.sh

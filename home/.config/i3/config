@@ -74,6 +74,7 @@ bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+#bindsym $mod+f [class=Chromium] split v, focus parent, fullscreen toggle, focus child
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -251,6 +252,9 @@ bindsym $mod+Ctrl+h "exec kill -36 `cat /tmp/notifihub-pid`"
 bindsym $mod+Ctrl+l "exec kill -37 `cat /tmp/notifihub-pid`"
 bindsym $mod+Ctrl+y "exec kill -38 `cat /tmp/notifihub-pid`"
 
+bindsym Print "exec file=~/Screenshots/`date +%F_%H%M%S`.png && scrot $file && cat $file | xclip -t image/png -i -selection CLIPBOARD"
+bindsym Ctrl+Print "exec file=~/Screenshots/`date +%F_%H%M%S`.png && scrot -bu $file && cat $file | xclip -t image/png -i -selection CLIPBOARD"
+
 #bindsym $mod+Shift+v "exec anamnesis --browse"
 
 exec compton -b
@@ -275,4 +279,4 @@ exec_always --no-startup-id pkill polybar; polybar unko
 exec_always --no-startup-id meru-input
 #exec_always --no-startup-id feh --no-fehbg --bg-scale ~/images/wallpapers/yandere-436709.jpg
 
-exec_always --no-startup-id redshift -PO 4500
+exec_always --no-startup-id redshift -PO 3200
