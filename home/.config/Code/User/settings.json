@@ -13,7 +13,6 @@
         "**/built/*": true
     },
     "window.zoomLevel": 1,
-    "workbench.colorTheme": "An Old Hope",
     "editor.minimap.enabled": true,
 
     "html.format.wrapAttributes": "force-aligned",
@@ -22,8 +21,28 @@
     "editor.fontFamily": "'Consolas'",
     "window.menuBarVisibility": "toggle",
     "workbench.iconTheme": "material-icon-theme",
-    "typescript.autoImportSuggestions.enabled": false,
-
-    "python.pythonPath": "python2.7",
-    "glassit.alpha": 10
+    "typescript.suggest.autoImports": false,
+    "explorer.confirmDelete": false,
+    "breadcrumbs.enabled": true,
+    "workbench.editor.enablePreview": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "explorer.confirmDragAndDrop": false,
+    "javascript.preferences.quoteStyle": "double",
+    "typescript.preferences.quoteStyle": "double",
+    "editor.selectionClipboard": false,
+    // "window.titleBarStyle": "native",
+    "window.titleBarStyle": "custom",
+    "python.venvPath": "~/projects/spaceknow",
+    "python.autoComplete.extraPaths": [
+        "/home/merumeru/projects/spaceknow/backend/python/",
+        "/home/merumeru/projects/spaceknow/bin/python"
+    ],
+    "editor.renderFinalNewline": true,
+    "workbench.colorTheme": "An Old Hope",
+    "python.jediEnabled": false,
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "emmet.showExpandedAbbreviation": "never",
+    "emmet.showAbbreviationSuggestions": false,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
 }

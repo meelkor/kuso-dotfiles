@@ -199,7 +199,7 @@ focus_follows_mouse no
 #for_window [class="urxvt"] new_window pixel 100
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #ff000000 #ffffff00 #555555 #2e9e0000   #28557700
+client.focused          #ffffffff #ffffffff #555555 #2e9e0000   #28557700
 client.focused_inactive #33333300 #99999900 #555555 #484e5000   #5f676a00
 client.unfocused        #33333300 #99999900 #777777 #292d2e00   #22222200
 
@@ -257,15 +257,14 @@ bindsym Ctrl+Print "exec file=~/Screenshots/`date +%F_%H%M%S`.png && scrot -bu $
 
 #bindsym $mod+Shift+v "exec anamnesis --browse"
 
-exec compton -b
 #--experimental-backends
 exec dunst
 exec nm-applet
-exec anamnesis --start
 
 ######################## Gaps config #########################
 
-gaps inner 20
+#gaps inner 20
+gaps inner 0
 # smart_gaps on
 
 workspace $w_chrome gaps inner 0
@@ -274,7 +273,11 @@ workspace $w_chrome gaps inner 0
 # workspace $w_code gaps inner 0
 ## workspace $w_
 
-exec_always --no-startup-id feh --no-fehbg --bg-scale ~images/wallpapers/yandere-436709.jpg
+exec_always xrandr --output eDP1 --mode 1920x1080
+exec_always xrandr --output eDP1 --mode 1920x1080 --output DP1 --primary --mode 1920x1080
+exec_always --no-startup-id pkill compton; compton -b
+exec_always --no-startup-id xinput set-prop 13 326 1
+exec_always --no-startup-id feh --no-fehbg  --bg-fill ~/Pictures/yande.re\ 518227\ animal_ears\ blood\ gun\ landscape\ sagiri_\(ulpha220\)\ smoking.jpg
 exec_always --no-startup-id pkill polybar; polybar unko
 exec_always --no-startup-id meru-input
 #exec_always --no-startup-id feh --no-fehbg --bg-scale ~/images/wallpapers/yandere-436709.jpg
