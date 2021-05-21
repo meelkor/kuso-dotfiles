@@ -22,5 +22,5 @@
 #	--veriftext=" " --wrongtext=" "
 #revert
 #rm /tmp/screen.png
-
-i3lock -i ~/Pictures/Wallpapers/i3lock.png
+LOCK_PIC=`find ~/Pictures/Wallpapers/Gris/png/ -type f | shuf -n 1`
+i3lock -i $LOCK_PIC
