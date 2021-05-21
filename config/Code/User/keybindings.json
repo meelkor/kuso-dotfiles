@@ -6,13 +6,8 @@
         "when": "editorTextFocus"
     },
     {
-        "key": "ctrl+.",
+        "key": "ctrl+shift+.",
         "command": "editor.action.showHover",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+shift+d",
-        "command": "editor.action.copyLinesDownAction",
         "when": "editorTextFocus"
     },
     {
@@ -30,16 +25,18 @@
         "command": "editor.action.jumpToBracket",
         "when": "editorTextFocus"
     },
-    {
-        "key": "ctrl+alt+left",
-        "command": "subwordNavigation.cursorSubwordLeft",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+alt+right",
-        "command": "subwordNavigation.cursorSubwordRight",
-        "when": "editorTextFocus"
-    },
+    { "key": "ctrl+alt+right",          "command": "cursorWordPartRight",
+                                       "when": "textInputFocus" },
+{ "key": "ctrl+shift+alt+right",    "command": "cursorWordPartRightSelect",
+                                       "when": "textInputFocus" },
+{ "key": "ctrl+alt+left",           "command": "cursorWordPartStartLeft",
+                                       "when": "textInputFocus" },
+{ "key": "ctrl+shift+alt+left",      "command": "cursorWordPartStartLeftSelect",
+                                       "when": "textInputFocus" },
+{ "key": "ctrl+alt+backspace",       "command": "deleteWordPartLeft",
+                                       "when": "textInputFocus && !editorReadonly" },
+{ "key": "ctrl+shift+alt+backspace", "command": "deleteWordPartRight",
+                                       "when": "textInputFocus && !editorReadonly" },
     {
         "key": "ctrl+alt+shift+left",
         "command": "subwordNavigation.cursorSubwordLeftSelect",
@@ -97,5 +94,193 @@
     {
         "key": "ctrl+alt+meta+down",
         "command": "workbench.action.terminal.focus"
-    }
+    },
+    {
+        "key": "ctrl+y",
+        "command": "-redo",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+t",
+        "command": "editor.action.transpose"
+    },
+    {
+        "key": "alt+j",
+        "command": "cursorDown",
+    },
+    {
+        "key": "alt+h",
+        "command": "cursorLeft",
+    },
+    {
+        "key": "alt+k",
+        "command": "-keybindings.editor.recordSearchKeys",
+        "when": "inKeybindings && inKeybindingsSearch"
+    },
+    {
+        "key": "alt+k",
+        "command": "cursorUp",
+    },
+    {
+        "key": "alt+l",
+        "command": "cursorRight",
+    },
+    {
+        "key": "alt+l",
+        "command": "-toggleFindInSelection",
+        "when": "editorFocus"
+    },
+    {
+        "key": "shift+alt+e",
+        "command": "editor.action.smartSelect.grow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+right",
+        "command": "-editor.action.smartSelect.grow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+alt+n",
+        "command": "editor.action.marker.next"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "-workbench.action.reloadWindow",
+        "when": "isDevelopment"
+    },
+    {
+        "key": "ctrl+alt+k",
+        "command": "-bookmarks.toggle",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+d",
+        "command": "bookmarks.toggleLabeled"
+    },
+    {
+        "key": "ctrl+shift+d",
+        "command": "editor.action.copyLinesDownAction"
+    },
+    {
+        "key": "ctrl+shift+d",
+        "command": "-workbench.view.debug"
+    },
+    {
+        "key": "escape escape",
+        "command": "-workbench.action.exitZenMode",
+        "when": "inZenMode"
+    },
+    {
+        "key": "alt+e",
+        "command": "cursorEnd",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "shift+alt+e",
+        "command": "cursorEndSelect",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "alt+a",
+        "command": "cursorHome",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "shift+alt+a",
+        "command": "cursorHomeSelect",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+k c",
+        "command": "-workbench.files.action.compareWithClipboard"
+    },
+    {
+        "key": "ctrl+k c",
+        // "command": ""
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "sequence": [
+                "extension.changeCase.camel",
+                "cancelSelection"
+            ]
+        },
+    },
+    {
+        "key": "ctrl+k p",
+        // "command": ""
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "sequence": [
+                "extension.changeCase.pascal",
+                "cancelSelection"
+            ]
+        },
+    },
+    {
+        "key": "alt+,",
+        "command": "workbench.action.navigateBack",
+    },
+    {
+        "key": "alt+.",
+        "command": "workbench.action.navigateForward",
+    },
+    {
+        "key": "shift+alt+n",
+        "command": "editor.action.marker.prevInFiles",
+        "when": "editorFocus"
+    },
+    {
+        "key": "shift+f8",
+        "command": "-editor.action.marker.prevInFiles",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+n",
+        "command": "editor.action.marker.nextInFiles",
+        "when": "editorFocus"
+    },
+    {
+        "key": "f8",
+        "command": "-editor.action.marker.nextInFiles",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+alt+h",
+        "command": "cursorWordLeft"
+    },
+    {
+        "key": "ctrl+alt+l",
+        "command": "cursorWordRight"
+    },
+    {
+        "key": "alt+j",
+        "command": "selectNextSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "alt+j",
+        "command": "list.focusDown",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "alt+j",
+        "command": "showNextParameterHint",
+        "when": "editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
+    },
+    {
+        "key": "alt+k",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "alt+k",
+        "command": "showPrevParameterHint",
+        "when": "editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
+    },
+    {
+        "key": "alt+k",
+        "command": "list.focusUp",
+        "when": "listFocus && !inputFocus"
+    },
 ]

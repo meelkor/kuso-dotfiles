@@ -18,32 +18,71 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #60777777
-background-alt = #60444444
+;background = #00
+; background = #cc151515
+; background-alt = #aa252540
+background = #40151500
+background-alt = #00252500
 ;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
-foreground-alt = #555
+foreground = #d7d0c7
+foreground-alt = #d7d0c7
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
+
+[bar/tasks]
+width = 60%
+height = 42
+;offset-x = 1%
+
+line-size = 3
+bottom = true
+border-top-size = 8
+border-right-size = 8
+border-left-size = 8
+font-0 = NotoSans Nerd Font:size=10;1
+font-1 = siji:pixelsize=16;1
+font-2 = NotoSans Nerd Font:size=16;4
+module-margin-left = 3
+module-margin-right = 3
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+modules-left = dmenu i3-windows
+
+;[bar/notifibar]
+
+;[bar/info]
+
+[bar/unko-hidpi]
+extends = unko
+monitor = ${env:MONITOR:eDP-1}
+#monitor = ${env:MONITOR:DP-2-1}
+height = 70
+dpi = ${xrdb:Xft.dpi:-1}
+
 [bar/unko]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:eDP-1}
 width = 100%
-height = 36
+height = 42 
+;height = 36
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
 line-color = #f00
+#dpi = ${xrdb:Xft.dpi:-1}
 
-border-size = 0
-border-top-size = 4
+;border-size = 8
+;border-top-size = 8
+;border-right-size = 8
+;border-left-size = 8
 border-color = #00000000
 
 padding-left = 0
@@ -54,18 +93,25 @@ module-margin-right = 3
 
 bottom = true
 
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+;font-0 = fixed:size=10;1
+;font-1 = fixed:size=10;1
+;font-0 = fixed:pixelsize=10;1
+;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+;font-2 = Material Icons:size=10;1
+font-0 = NotoSans Nerd Font:size=10;1
+font-1 = siji:pixelsize=16;1
+font-2 = NotoSans Nerd Font:size=16;4
 
-modules-left = i3
+modules-left = dmenu i3-windows
 modules-center = 
-modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+;modules-right = notifihub filesystem xbacklight pulseaudio memory cpu wlan eth battery temperature date powermenu
+modules-right = polystock-pltr polystock filesystem xbacklight pulseaudio memory cpu wlan eth battery battery-1 temperature date powermenu
 
 tray-position = right
 tray-padding = 2
 ;tray-transparent = true
-;tray-background = #0063ff
+;tray-background = #330063ff
+tray-maxsize = 24
 
 ;wm-restack = bspwm
 wm-restack = i3
@@ -100,6 +146,24 @@ label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
+
+
+[module/gmail-sk]
+type = custom/script
+exec = ~/.config/polybar/gmail/launch.py
+tail = true
+click-left = xdg-open https://mail.google.com
+
+[module/gmail]
+type = custom/script
+exec = ~/.config/polybar/gmail-sk/launch.py
+tail = true
+click-left = xdg-open https://mail.google.com
+
+[module/notifihub]
+type = custom/script
+exec = ~/projects/bin/python3 ~/projects/polybar-notifihub/module.py
+tail = true
 
 [module/filesystem]
 type = internal/fs
@@ -187,19 +251,11 @@ label-song-ellipsis = true
 [module/xbacklight]
 type = internal/xbacklight
 
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
+format = <ramp>
+ramp-0 = %{F#808080}%{F-}
+ramp-1 = %{F#aaaaaa}%{F-}
+ramp-2 = %{F#cccccc}%{F-}
+ramp-3 = %{F#eeeeee}%{F-}
 
 [module/backlight-acpi]
 inherit = module/xbacklight
@@ -209,10 +265,18 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
-label = %percentage:2%%
+;format-prefix = " "
+;format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = #f90000
+;label = %percentage:2%%
+format = <label> <ramp-coreload>
+label = %{F#8fbcbb}%{F-} %percentage:2%%
+ 
+ramp-coreload-spacing = 1
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
 
 [module/memory]
 type = internal/memory
@@ -237,11 +301,12 @@ format-disconnected =
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+;ramp-signal-0 = 
+;ramp-signal-1 = 
+;ramp-signal-2 = 
+;ramp-signal-3 = 
+;ramp-signal-4 = 
+ramp-signal-0 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
@@ -279,11 +344,11 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
+format-volume = <label-volume>
+label-volume =  %percentage%%
 label-volume-foreground = ${root.foreground}
 
-label-muted = 🔇 muted
+label-muted = ﱝ 
 label-muted-foreground = #666
 
 bar-volume-width = 10
@@ -297,9 +362,9 @@ bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
 bar-volume-indicator = |
 bar-volume-indicator-font = 2
-bar-volume-fill = ─
+bar-volume-fill = █
 bar-volume-fill-font = 2
-bar-volume-empty = ─
+bar-volume-empty = █
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
@@ -333,40 +398,73 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
+full-at = 95
 battery = BAT0
 adapter = AC
-full-at = 98
-
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
-
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = " "
+poll-interval = 5
+format-charging = <animation-charging><label-charging>
+format-discharging = <ramp-capacity><label-discharging>
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
+label-charging = "%percentage:3%%  "
+label-discharging = "%percentage:3%%  %{-u}%{F-}"
+label-full = "   %percentage:3%%  "
+ramp-capacity-0 ="%{F#bf616a}%{u#bf616a +u}   "
+ramp-capacity-1 ="%{F#d08770}%{u#d08770 +u}   "
+ramp-capacity-2 ="%{F#d08770}%{u#d08770 +u}   "
+ramp-capacity-3 ="%{F#ebcb8b}%{u#ebcb8b +u}   "
+ramp-capacity-4 ="%{F#ebcb8b}%{u#ebcb8b +u}   "
+ramp-capacity-5 ="%{F#ebcb8b}%{u#ebcb8b +u}   "
+ramp-capacity-6 ="%{F#a3be8c}%{u#a3be8c +u}   "
+ramp-capacity-7 ="%{F#a3be8c}%{u#a3be8c +u}   "
+ramp-capacity-8 ="%{F#a3be8c}%{u#a3be8c +u}   "
+ramp-capacity-9 ="%{F#a3be8c}%{u#a3be8c +u}   "
+ramp-capacity-10="%{F#a3be8c}%{u#a3be8c +u}   "
+ramp-capacity-11="%{F#a3be8c}%{u#a3be8c +u}   "
+ramp-capacity-12="%{F#a3be8c}%{u#a3be8c +u}   "
+animation-charging-0 = "   "
+animation-charging-1 = "   "
+animation-charging-2 = "   "
+animation-charging-3 = "   "
+animation-charging-4 = "   "
+animation-charging-framerate = 500
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
-
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
+[module/battery-1]
+type = internal/battery
+full-at = 95
+battery = BAT1
+adapter = AC
+poll-interval = 5
+format-charging = <animation-charging><label-charging>
+format-discharging = <ramp-capacity><label-discharging>
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+label-charging = "%percentage:3%%  "
+label-discharging = "%percentage:3%%  %{-u}%{F-}"
+label-full = "   %percentage:3%%  "
+ramp-capacity-0 ="%{F#bf616a}%{u#bf616a +u}   "
+ramp-capacity-1 ="%{F#d08770}%{u#d08770 +u}   "
+ramp-capacity-2 ="%{F#d08770}%{u#d08770 +u}   "
+ramp-capacity-3 ="%{F#ebcb8b}%{u#ebcb8b +u}   "
+ramp-capacity-4 ="%{F#ebcb8b}%{u#ebcb8b +u}   "
+ramp-capacity-5 ="%{F#ebcb8b}%{u#ebcb8b +u}   "
+ramp-capacity-6 ="%{F#a3be8c}%{u#a3be8c +u}   "
+ramp-capacity-7 ="%{F#a3be8c}%{u#a3be8c +u}   "
+ramp-capacity-8 ="%{F#a3be8c}%{u#a3be8c +u}   "
+ramp-capacity-9 ="%{F#a3be8c}%{u#a3be8c +u}   "
+ramp-capacity-10="%{F#a3be8c}%{u#a3be8c +u}   "
+ramp-capacity-11="%{F#a3be8c}%{u#a3be8c +u}   "
+ramp-capacity-12="%{F#a3be8c}%{u#a3be8c +u}   "
+animation-charging-0 = "   "
+animation-charging-1 = "   "
+animation-charging-2 = "   "
+animation-charging-3 = "   "
+animation-charging-4 = "   "
+animation-charging-framerate = 500
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 1
+thermal-zone = 7
 warn-temperature = 60
 
 format = <ramp> <label>
@@ -422,5 +520,31 @@ screenchange-reload = true
 [global/wm]
 margin-top = 5
 margin-bottom = 5
+
+[module/dmenu]
+type = custom/text
+content-font = 3
+content = "    %{T3}%{T-} "
+click-left = "/home/merumeru/dmenu.sh &"
+
+;content-background = #4e9fb1
+;content-foreground = #101010
+
+[module/i3-windows]
+type = custom/script
+exec = ~/projects/polybar-i3-windows/module.py
+tail = true
+
+[module/polystock-pltr]
+type = custom/script
+exec = python ~/projects/polystock/polystock.py --customticker PLTR
+tail = true
+label = %output%
+
+[module/polystock]
+type = custom/script
+exec = python ~/projects/polystock/polystock.py --customticker GME
+tail = true
+label = %output%
 
 ; vim:ft=dosini
