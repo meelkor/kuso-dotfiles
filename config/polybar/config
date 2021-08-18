@@ -105,7 +105,7 @@ font-2 = NotoSans Nerd Font:size=16;4
 modules-left = dmenu i3-windows
 modules-center = 
 ;modules-right = notifihub filesystem xbacklight pulseaudio memory cpu wlan eth battery temperature date powermenu
-modules-right = polystock-pltr polystock filesystem xbacklight pulseaudio memory cpu wlan eth battery battery-1 temperature date powermenu
+modules-right = polystock-amc polystock-bb polystock-pltr polystock filesystem xbacklight pulseaudio memory cpu wlan eth battery battery-1 temperature date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -535,9 +535,21 @@ type = custom/script
 exec = ~/projects/polybar-i3-windows/module.py
 tail = true
 
+[module/polystock-bb]
+type = custom/script
+exec = python ~/projects/polystock/polystock.py --customticker BB
+tail = true
+label = %output%
+
 [module/polystock-pltr]
 type = custom/script
 exec = python ~/projects/polystock/polystock.py --customticker PLTR
+tail = true
+label = %output%
+
+[module/polystock-amc]
+type = custom/script
+exec = python ~/projects/polystock/polystock.py --customticker AMC
 tail = true
 label = %output%
 

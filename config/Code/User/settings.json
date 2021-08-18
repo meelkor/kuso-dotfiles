@@ -27,8 +27,6 @@
     "javascript.preferences.quoteStyle": "double",
     "typescript.preferences.quoteStyle": "double",
     "editor.selectionClipboard": false,
-    // "window.titleBarStyle": "native",
-    "window.titleBarStyle": "custom",
     "python.venvPath": "~/projects/spaceknow",
     "python.autoComplete.extraPaths": [
         "/home/merumeru/projects/spaceknow/backend/python/",
@@ -44,13 +42,16 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "python.languageServer": "Microsoft",
     "sync.gist": "e6283253c40487ac3aabda0ce60a4e44",
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
     "typescript.updateImportsOnFileMove.enabled": "always",
     "angular.experimental-ivy": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "window.titleBarStyle": "custom",
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
     "window.zoomLevel": 1
 }
