@@ -1,0 +1,20 @@
+#!/bin/sh
+
+cd $KUSO_REBASE_FRONTEND
+
+git rebase --abort
+git checkout master \
+    && git pull
+
+export GIT_SEQUENCE_EDITOR=:
+REMOTE_BRANCH=`git branch -lqar --sort -committerdate --format "%(refname:short)" | rofi -dmenu`;
+BRANCH=`echo $REMOTE_BRANCH | sed "s/^origin\///"`
+
+git checkout master \
+    && git pull \
+    && git checkout $BRANCH \
+    && git reset --hard $REMOTE_BRANCH \
+    && git rebase -i master --autosquash \
+    && git push origin $BRANCH --force-with-lease \
+    && notify-send "Rebased and pushed~~~" \
+    || notify-send "There's a rebase conflict of something :(("

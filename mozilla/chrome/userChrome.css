@@ -1,0 +1,82 @@
+/*@import url("chameleon.css") screen;*/
+
+#TabsToolbar, #titlebar, #main-window, #navigator-toolbox{
+  -moz-appearance: none !important;
+  background-color: rgba(255,255,255,0) !important;
+  background-image: none !important;
+}
+
+
+#TabsToolbar{
+  -moz-appearance: none !important;
+  background-color: rgba(49,49,58,0) !important; /**/
+  background-image: none !important;
+}
+
+
+#nav-bar{
+  -moz-appearance: none !important;
+  background-color: rgba(255,255,255,0) !important;
+  background-image: none !important;
+}
+
+#main-window {
+  background-color: transparent !important;
+}
+
+#tabbrowser-tabs:not([movingtab]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab > .tab-stack > .tab-background[multiselected="true"],
+#tabbrowser-tabs:not([movingtab]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab > .tab-stack > .tab-background[selected="true"] {
+  background-image: none !important;
+}
+
+.tabbrowser-tab:not([multiselected])[selected="true"] .tab-content:not([multiselected]) {
+  background-color: #12020b80 !important;
+}
+
+.tabbrowser-tab:not([selected="true"]) .tab-content:not([multiselected]) .tab-icon-stack {
+  filter: grayscale();
+}
+
+.tabbrowser-tab .tab-background {
+  box-shadow: none !important;
+  background-color: transparent;
+}
+
+#nav-bar-customization-target {
+  background-color: #12020b80 !important;
+}
+
+#PanelUI-button {
+  background-color: #12020b80 !important;
+}
+
+#urlbar-background {
+  outline-color: --chrome-content-separator-color !important;
+}
+
+#urlbar-container {
+  --urlbar-container-height: 42px !important;
+  height: 42px !important;
+}
+
+#urlbar {
+  --urlbar-height: 100% !important;
+  --urlbar-toolbar-height: 100% !important;
+  border-radius: 0 !important;
+}
+
+#urlbar-background {
+  background: #ffffff0a !important;
+  border-bottom: 3px solid #ffffff7a !important;
+  border-radius: 0 !important;
+  background: linear-gradient(#0000, #0000, #ffffff05, #ffffff15) !important;
+  border-top: 0 !important;
+}
+
+#urlbar[focused=true] #urlbar-background {
+  background: #12020b80 !important;
+}
+
+.tabbrowser-tab {
+    box-shadow: #00000017 3px 0 3px !important;
+}

@@ -1,0 +1,3 @@
+[submodule "deps/xlayoutdisplay"]
+	path = deps/xlayoutdisplay
+	url = git@github.com:meelkor/xlayoutdisplay.git

@@ -19,13 +19,10 @@
     "editor.autoIndent": false,
     "editor.fontFamily": "'Consolas'",
     "window.menuBarVisibility": "toggle",
-    "workbench.iconTheme": "material-icon-theme",
     "explorer.confirmDelete": false,
     "breadcrumbs.enabled": true,
     "workbench.editor.enablePreview": true,
     "explorer.confirmDragAndDrop": false,
-    "javascript.preferences.quoteStyle": "double",
-    "typescript.preferences.quoteStyle": "double",
     "editor.selectionClipboard": false,
     "python.venvPath": "~/projects/spaceknow",
     "python.autoComplete.extraPaths": [
@@ -53,5 +50,7 @@
         "default": "right",
         "jupyter-notebook": "left"
     },
+    "workbench.iconTheme": "material-icon-theme",
+    "javascript.updateImportsOnFileMove.enabled": "always",
     "window.zoomLevel": 1
 }
