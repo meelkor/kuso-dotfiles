@@ -3,3 +3,4 @@
 xset dpms 180 180 180
 xset r rate 240 50
 
+xinput set-prop "DLL0945:00 06CB:CDE6 Touchpad" "libinput Tapping Enabled" 1
