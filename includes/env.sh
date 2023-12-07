@@ -4,6 +4,7 @@
 alias vim=nvim
 export EDITOR="nvim"
 export CHROME_BIN=/usr/bin/chromium
+export TERM=kitty
 
 PATH+=":$KUSO_BACKEND/devtools"
 PATH+=":$KUSO/bin"
