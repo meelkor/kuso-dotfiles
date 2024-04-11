@@ -10,9 +10,11 @@ function gpf {
   git push origin $(git branch --show-current) --force-with-lease
 }
 
-function um {
+function gum {
   git fetch origin master:master
 }
 
 alias grim='git rebase -i master'
+alias gap='git add -p'
+alias skf=$KUSO_FRONTEND/skf
 
