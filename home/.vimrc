@@ -1,6 +1,37 @@
 set nocompatible
 filetype off 
 
+set rtp+=/usr/share/vim/vimfiles/autoload/vundle.vim
+
+call vundle#begin()
+
+"Plugin 'VundleVim/Vundle.vim'
+
+""Plugin 'Shougo/deoplete.nvim'
+""Plugin 'jaxbot/github-issues.vim'
+Plugin 'vim-syntastic/syntastic'
+"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'leafgarland/typescript-vim'
+Plugin 'fannheyward/coc-pyright'
+Plugin 'peitalin/vim-jsx-typescript'
+Plugin 'pangloss/vim-javascript'   
+Plugin 'maxmellon/vim-jsx-pretty'
+Plugin 'neoclide/coc.nvim'  
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'preservim/nerdtree'
+Plugin 'severin-lemaignan/vim-minimap'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'pineapplegiant/spaceduck'
+Plugin 'kyazdani42/nvim-web-devicons'
+Plugin 'romgrk/barbar.nvim'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'folke/tokyonight.nvim'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 set number
 set expandtab
 set tabstop=4
@@ -12,7 +43,6 @@ set scrolloff=35
 
 set cursorcolumn
 set cursorline
-set background = "light"
 set clipboard=unnamedplus
 
 let g:NERDTreeWinSize=60
@@ -24,46 +54,12 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 nmap <silent> gd <Plug>(coc-definition)
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-
-"Plugin 'Shougo/deoplete.nvim'
-"Plugin 'jaxbot/github-issues.vim'
-Plugin 'vim-syntastic/syntastic'
-"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'leafgarland/typescript-vim'
-Plugin 'fannheyward/coc-pyright'
-Plugin 'peitalin/vim-jsx-typescript'
-Plugin 'pangloss/vim-javascript'   
-Plugin 'maxmellon/vim-jsx-pretty'  
-Plugin 'neoclide/coc.nvim'  
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'preservim/nerdtree'
-Plugin 'severin-lemaignan/vim-minimap'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'pineapplegiant/spaceduck'
-Plugin 'kyazdani42/nvim-web-devicons'
-Plugin 'romgrk/barbar.nvim'
-
-call vundle#end()
-
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-if exists('+termguicolors')
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-set termguicolors
-endif
-
-colorscheme spaceduck
+lua require("tokyonight").setup({ transparent = true })
+colorscheme tokyonight-night
    
-filetype plugin indent on
-
 " Transparent editing of gpg encrypted files.
 augroup encrypted
 au!
@@ -99,3 +95,4 @@ augroup END
 " autocmd VimLeave * call system('printf "\e[2 q" > $TTY')
 autocmd VimLeave * set guicursor=a:ibeam-blinkon0
 
+command! -nargs=0 Sw w !sudo tee % > /dev/null
