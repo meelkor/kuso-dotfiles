@@ -15,3 +15,6 @@ export PATH
 
 PYTHONPATH+=":$KUSO_BACKEND/python"
 
+# QGIS works on wayland, but expects X's DISPLAY to be set?
+export DISPLAY=0
+

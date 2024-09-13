@@ -25,6 +25,8 @@
 #LOCK_PIC=`find ~/projects/kuso-dotfiles/Gris-16:10/ -type f | shuf -n 1`
 #i3lock -i $LOCK_PIC
 #i3lock -i ../lockscreen-2.jpg
-betterlockscreen -l dim -- --ring-color=ffffff88 --keyhl-color=33588fff &
-sleep 10
-xset dpms force off
+#betterlockscreen -l dim -- --ring-color=ffffff88 --keyhl-color=33588fff &
+#sleep 10
+#xset dpms force off
+
+swaylock -d -c 111122

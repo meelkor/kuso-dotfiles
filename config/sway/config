@@ -197,6 +197,8 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+bindsym $mod+Ctrl+k move workspace to output up
+bindsym $mod+Ctrl+j move workspace to output down
 
 #
 # Status Bar:
@@ -224,6 +226,7 @@ default_border pixel 1
 blur enable
 #blur_passes 10
 #blur_radius 10
+corner_radius 4
 
 xwayland disable
 
@@ -242,6 +245,9 @@ input "type:touchpad" {
     scroll_factor 0.6
 }
 
-bindsym XF86MonBrightnessUp exec brightnessctl set +10
-bindsym XF86MonBrightnessDown exec brightnessctl set 10-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym $mod+F10 exec $KUSO/scripts/lock.sh
+bindsym Ctrl+Mod1+space "exec dunstctl close"
+bindsym Ctrl+grave "exec dunstctl history-pop"
 exec_always pkill waybar; waybar
