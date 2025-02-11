@@ -24,6 +24,7 @@ set $menu rofi -show drun | xargs swaymsg exec --
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /home/merumeru/projects/kuso-dotfiles/Gris/20210110175922_1.jpg fill
+output eDP-1 pos 0 0 res 2880x1800@60Hz
 #
 # Example configuration:
 #
