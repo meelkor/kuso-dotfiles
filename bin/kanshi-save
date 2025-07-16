@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Stolen from https://www.reddit.com/r/swaywm/comments/1d9l0cp/script_to_save_current_monitor_layout_for_kanshi/
+
+name=$1
+
+if [ -z "$name" ]; then
+    echo "Usage: $0 <name>"
+    exit 1
+fi
+
+echo "Saving profile $name"
+
+echo -e "\nprofile $name {" >> ~/.config/kanshi/config
+swaymsg -t get_outputs | \
+  jq '.[] | "  output '"'"'\(.make) \(.model) \(.serial)'"'"' mode \(.current_mode.width)x\(.current_mode.height) position \(.rect.x),\(.rect.y)"' -r \
+  >> ~/.config/kanshi/config
+echo "}" >> ~/.config/kanshi/config
+

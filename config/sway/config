@@ -18,7 +18,7 @@ set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu rofi -show drun | xargs swaymsg exec --
+set $menu rofi -show combi -modes combi -combi-modes "drun,run" | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -230,6 +230,9 @@ xwayland disable
 input "type:keyboard" {
 	repeat_rate 50
 	repeat_delay 240
+
+    xkb_layout us,cz(qwerty)
+    xkb_options grp:ctrls_toggle
 }
 focus_follows_mouse no
 
@@ -245,7 +248,10 @@ input "type:touchpad" {
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym $mod+F10 exec $KUSO/scripts/lock.sh
-bindsym $mod+Shift+s exec grimshot copy area
-bindsym Ctrl+Mod1+space "exec dunstctl close"
-bindsym Ctrl+grave "exec dunstctl history-pop"
+bindsym $mod+Shift+s exec grimshot copy area --cursor
+bindsym $mod+F12 exec sh -c 'ssfile=$(mktemp /tmp/ssXXXXXX.png); grimshot save screen "$ssfile" --cursor && imv -s none -f "$ssfile" && rm -f "$ssfile"'
+bindsym Ctrl+$mod+space exec dunstctl close
+bindsym Ctrl+grave exec dunstctl history-pop
 exec_always pkill waybar; waybar
+exec_always pkill kanshi; kanshi
+

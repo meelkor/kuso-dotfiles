@@ -1,0 +1,6 @@
+author=`echo $1 | grep -oE "^[^\.]+"`
+ext=`echo $1 | grep -oE "[^\.]+$"`
+xdg-open "https://marketplace.visualstudio.com/_apis/public/gallery/publishers/$author/vsextensions/$ext/latest/vspackage"
+#curl "https://marketplace.visualstudio.com/_apis/public/gallery/publishers/$author/vsextensions/$ext/latest/vspackage" > /tmp/extension-dl.vsix
+# firejail --net=none codium --install-extension /tmp/extension-dl.vsix
+# ?targetPlatform=linux-x64
