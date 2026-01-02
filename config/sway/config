@@ -44,7 +44,7 @@ output eDP-1 pos 0 0 res 2880x1800@60Hz
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
-exec swayidle -w timeout 60 '$KUSO/scripts/lock.sh' timeout 60 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep '$KUSO/scripts/lock.sh'
+exec swayidle -w timeout 160 '$KUSO/scripts/lock.sh' timeout 60 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep '$KUSO/scripts/lock.sh'
 
 ### Input configuration
 #
@@ -239,7 +239,7 @@ focus_follows_mouse no
 input "type:touchpad" {
     tap enabled
     natural_scroll disabled
-    dwt enabled
+    dwt disabled
     accel_profile "flat" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
     pointer_accel 0.5 # set mouse sensitivity (between -1 and 1)
     scroll_factor 0.6
