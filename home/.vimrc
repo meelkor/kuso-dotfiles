@@ -1,7 +1,7 @@
 set nocompatible
 filetype off 
 
-set rtp+=/usr/share/vim/vimfiles/autoload/vundle.vim
+set rtp+=/home/merumeru/.vim/bundle/Vundle.vim/
 
 call vundle#begin()
 

@@ -1,0 +1,13 @@
+profile meeting-room {
+  output 'Sharp Corporation 0x14F9 Unknown' enable mode 1920x1200 position 4016,2271
+  output 'Samsung Electric Company SAMSUNG 0x01000E00' mode 3840x2160 position 4016,1191 scale 2.0
+}
+
+profile default {
+  output 'Sharp Corporation 0x14F9 Unknown' enable mode 1920x1200 position 4016,2271
+}
+
+profile benq-only {
+  output 'BNQ BenQ BL2710 W9F01053SL0' mode 2560x1440 position 1920,0
+  output 'Sharp Corporation 0x14F9 Unknown' disable
+}

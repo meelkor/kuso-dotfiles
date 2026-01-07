@@ -8,3 +8,4 @@ ln -fs ~/projects/kuso-dotfiles/config/waybar/style.css ~/.config/waybar/
 ln -fs ~/projects/kuso-dotfiles/home/.vimrc ~/
 ln -fs ~/projects/kuso-dotfiles/config/nvim/init.vim ~/.config/nvim/
 ln -fs ~/projects/kuso-dotfiles/config/imv ~/.config/imv
+ln -fs ~/projects/kuso-dotfiles/config/kanshi ~/.config/kanshi
