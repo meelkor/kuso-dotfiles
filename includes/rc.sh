@@ -16,5 +16,6 @@ function gum {
 
 alias grim='git rebase -i master'
 alias gap='git add -p'
+alias gbc='git branch --show-current'
 alias skf=$KUSO_FRONTEND/skf
 

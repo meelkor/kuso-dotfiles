@@ -233,6 +233,7 @@ input "type:keyboard" {
 
     xkb_layout us,cz(qwerty)
     xkb_options grp:ctrls_toggle
+    xkb_numlock enabled
 }
 focus_follows_mouse no
 
@@ -254,4 +255,5 @@ bindsym Ctrl+$mod+space exec dunstctl close
 bindsym Ctrl+grave exec dunstctl history-pop
 exec_always pkill waybar; waybar
 exec_always pkill kanshi; kanshi
+exec_always pkill swayidle; swayidle timeout 180 $KUSO/scripts/lock.sh timeout 300 cya
 
